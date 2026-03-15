@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Single Page Application redirect for GitHub Pages
+        // This script redirects all 404s to the main app after 3 seconds
+        (function() {
+            var path = window.location.pathname;
+            var search = window.location.search;
+            var hash = window.location.hash;
+            
+            // Show countdown
+            var countdown = 3;
+            var countdownElement = document.getElementById('countdown');
+            
+            var timer = setInterval(function() {
+                countdown--;
+                if (countdownElement) {
+                    countdownElement.textContent = countdown;
+                }
+                
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    // Redirect to index.html with the original path, search, and hash
+                    window.location.replace('/' + search + hash);
+                }
+            }, 1000);
+        })();
+    </script>
+</head>
+<body>
+    <div style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
+        <h1>404 - Page Not Found</h1>
+        <p>Redirecting to main page in <span id="countdown">3</span> seconds...</p>
+        <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
+    </div>
+</body>
+</html>
